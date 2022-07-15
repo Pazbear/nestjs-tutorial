@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { AuthCredentialsDto } from './dto/auth-credentials.dto';
+import { UserRepository } from './user.repository';
 
 @Injectable({})
 export class AuthService {
-  signup() {
-    return { msg: 'I have signed up' };
-  }
+  constructor(
+    @InjectRepository(UserRepository)
+    private userRepository: UserRepository,
+  ) {}
 
-  signin() {
-    return { msg: 'I have signed in' };
+  signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
+    return this.userRepository.createUser(authCredentialsDto);
   }
 }

@@ -50,5 +50,3 @@ export class BoardsController {
     return this.boardsService.deleteBoard(id);
   }
 }
-
-//3:38:55

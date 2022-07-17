@@ -6,6 +6,7 @@ import { BoardsModule } from './boards/boards.module';
 import { typeORMConfig } from './configs/typeorm.config';
 import { TypeOrmExModule } from './db/typeorm-ex.module';
 import { UserModule } from './user/user.module';
+import { ConfigurationModule } from './configuration/configuration.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     UserModule,
     BoardsModule,
+    ConfigurationModule,
   ],
 })
 export class AppModule {}

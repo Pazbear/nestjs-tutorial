@@ -1,7 +1,10 @@
+import { type } from 'os';
+import { Board } from 'src/boards/board.entity';
 import {
   BaseEntity,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
@@ -17,4 +20,8 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Board, (board) => board.user, { eager: true })
+  //eager : true 일 경우 유저정보를 가져올 때 board 정보도 가져옴
+  boards: Board[];
 }
